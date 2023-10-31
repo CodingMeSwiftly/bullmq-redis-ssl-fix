@@ -30,10 +30,11 @@ class RedisConnection:
 
             self.conn = redis.Redis(
                 host=host, port=port, db=db, password=password, decode_responses=True,
-                retry=retry, retry_on_error=retry_errors, username=username)
+                retry=retry, retry_on_error=retry_errors, 
+username=username, ssl_cert_reqs=None)
         else:
             self.conn = redis.from_url(redisOpts, decode_responses=True, retry=retry,
-                retry_on_error=retry_errors)
+                retry_on_error=retry_errors, ssl_cert_reqs=None)
 
     def disconnect(self):
         """
